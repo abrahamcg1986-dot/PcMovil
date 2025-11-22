@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC Móvil | Todo para tu Celular, Laptop o Tablet.</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuración de Tailwind para usar la fuente Inter -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+            color: #1f2937; /* Gris oscuro para el texto principal */
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#0070f3', // Azul moderno para acentos
+                        'secondary': '#1e3a8a', // Azul oscuro para contraste
+                        'accent': '#f59e0b', // Amarillo/Naranja para CTAs
+                    }
+                }
+            }
+        }
+
+        // Función de desplazamiento suave
+        function smoothScroll(targetId) {
+            document.getElementById(targetId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Script para el menú móvil
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuButton.addEventListener('click', () => {
+                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+                menuButton.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Cerrar menú móvil al hacer click en un enlace
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuButton.setAttribute('aria-expanded', 'false');
+                });
+            });
+        });
+    </script>
+</head>
+<body class="antialiased">
+
+    <!-- Barra de Navegación Fija -->
+    <header class="sticky top-0 z-50 bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo: PC Móvil -->
+                <a href="#" class="text-2xl font-extrabold text-secondary hover:text-primary transition duration-300">
+                    PC Móvil
+                </a>
+                
+                <!-- Navegación Principal (Desktop) -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#servicios" onclick="smoothScroll('servicios')" class="text-gray-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition duration-300">Servicios</a>
+                    <a href="#accesorios" onclick="smoothScroll('accesorios')" class="text-gray-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition duration-300">Accesorios</a>
+                    <a href="#quienes-somos" onclick="smoothScroll('quienes-somos')" class="text-gray-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition duration-300">Quiénes Somos</a>
+                    <a href="#contacto" onclick="smoothScroll('contacto')" class="bg-primary text-white hover:bg-secondary px-4 py-2 rounded-full text-sm font-medium transition duration-300 shadow-md">Contacto</a>
+                </nav>
+
+                <!-- Botón de Menú Móvil (Hamburguesa) -->
+                <button id="menu-button" class="md:hidden p-2 rounded-md text-gray-500 hover:text-primary hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary" aria-expanded="false">
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menú Móvil Desplegable -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#servicios" onclick="smoothScroll('servicios')" class="text-gray-600 hover:bg-gray-50 hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Servicios</a>
+                <a href="#accesorios" onclick="smoothScroll('accesorios')" class="text-gray-600 hover:bg-gray-50 hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Accesorios</a>
+                <a href="#quienes-somos" onclick="smoothScroll('quienes-somos')" class="text-gray-600 hover:bg-gray-50 hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Quiénes Somos</a>
+                <a href="#contacto" onclick="smoothScroll('contacto')" class="bg-primary text-white hover:bg-secondary block px-3 py-2 rounded-md text-base font-medium mt-1">Contacto</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección Hero (Principal) -->
+    <section id="hero" class="bg-secondary text-white py-16 sm:py-24 md:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4">
+                <span class="block">PC Móvil</span>
+                <span class="block text-accent mt-2">Todo para tu Celular, Laptop o Tablet.</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-200">
+                Especialistas en la reparación de Celulares y Laptops de todas las marcas. ¡Devolvemos la vida a tus dispositivos!
+            </p>
+            <div class="mt-10 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <a href="#servicios" onclick="smoothScroll('servicios')" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full shadow-lg text-secondary bg-accent hover:bg-yellow-600 transition duration-300 transform hover:scale-105">
+                    Ver Servicios de Reparación
+                </a>
+                <a href="#contacto" onclick="smoothScroll('contacto')" class="inline-flex items-center justify-center px-8 py-3 border border-white text-base font-medium rounded-full text-white hover:bg-white hover:text-secondary transition duration-300">
+                    Solicitar Cotización
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Servicios (Reparaciones) -->
+    <section id="servicios" class="py-16 sm:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-base text-primary font-semibold tracking-wide uppercase">Nuestras Especialidades</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Reparación Profesional y Confiable
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Tarjeta de Servicio 1: Reparación de Celulares -->
+                <div class="bg-gray-50 rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                    <img src="https://placehold.co/600x400/0070f3/ffffff?text=Reparaci%C3%B3n+de+Pantallas" alt="Imagen de reparación de pantalla de celular" class="w-full h-48 object-cover object-center">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-3">Reparación de Celulares</h3>
+                        <p class="text-gray-600">
+                            Pantallas rotas, cambios de batería, problemas de carga, software y más para iPhone, Samsung, Xiaomi y todas las marcas.
+                        </p>
+                        <ul class="mt-4 space-y-1 text-sm text-gray-500">
+                            <li class="flex items-center"><svg class="flex-shrink-0 mr-1.5 h-4 w-4 text-accent" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>Cambio de Display y Táctil</li>
+                            <li class="flex items-center"><svg class="flex-shrink-0 mr-1.5 h-4 w-4 text-accent" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>Reemplazo de Batería</li>
+                        </ul>
+                        <a href="#contacto" onclick="smoothScroll('contacto')" class="mt-4 block text-center text-primary font-semibold hover:text-accent transition duration-300">¡Cotiza tu Reparación! &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de Servicio 2: Reparación de Laptops -->
+                <div class="bg-gray-50 rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                    <img src="https://placehold.co/600x400/0070f3/ffffff?text=Mantenimiento+de+Laptop" alt="Imagen de reparación interna de laptop" class="w-full h-48 object-cover object-center">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-3">Reparación de Laptops</h3>
+                        <p class="text-gray-600">
+                            Solucionamos problemas de hardware, software, recalentamiento, fallas de encendido y upgrades (SSD/RAM).
+                        </p>
+                        <ul class="mt-4 space-y-1 text-sm text-gray-500">
+                            <li class="flex items-center"><svg class="flex-shrink-0 mr-1.5 h-4 w-4 text-accent" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>Limpieza y Mantenimiento</li>
+                            <li class="flex items-center"><svg class="flex-shrink-0 mr-1.5 h-4 w-4 text-accent" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>Reinstalación de Sistema Operativo</li>
+                        </ul>
+                        <a href="#contacto" onclick="smoothScroll('contacto')" class="mt-4 block text-center text-primary font-semibold hover:text-accent transition duration-300">¡Agenda tu Diagnóstico! &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de Servicio 3: Diagnóstico y Mantenimiento (Enfocado a Accesorios) -->
+                <div class="bg-gray-50 rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                    <img src="https://placehold.co/600x400/0070f3/ffffff?text=Venta+de+Accesorios" alt="Imagen de un técnico revisando un circuito" class="w-full h-48 object-cover object-center">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-3">Venta de Accesorios Premium</h3>
+                        <p class="text-gray-600">
+                            Amplia selección de fundas, cargadores, periféricos y gadgets con garantía de calidad.
+                        </p>
+                        <ul class="mt-4 space-y-1 text-sm text-gray-500">
+                            <li class="flex items-center"><svg class="flex-shrink-0 mr-1.5 h-4 w-4 text-accent" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>Solo Marcas Reconocidas</li>
+                            <li class="flex items-center"><svg class="flex-shrink-0 mr-1.5 h-4 w-4 text-accent" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>Asesoría en Accesorios</li>
+                        </ul>
+                        <a href="#accesorios" onclick="smoothScroll('accesorios')" class="mt-4 block text-center text-primary font-semibold hover:text-accent transition duration-300">Ver Catálogo &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Accesorios -->
+    <section id="accesorios" class="py-16 sm:py-24 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-base text-primary font-semibold tracking-wide uppercase">Productos Destacados</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Los Accesorios que Necesitas
+                </p>
+                <p class="mt-4 text-lg text-gray-600">
+                    Protege y maximiza la funcionalidad de tus dispositivos con nuestra selección de productos de alta calidad.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Accesorio 1: Protectores de Pantalla -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-center hover:shadow-xl transition duration-300">
+                    <img src="https://placehold.co/400x400/f59e0b/ffffff?text=Micas+para+Celular" alt="Imagen de protector de pantalla para celular" class="w-full h-32 object-contain mx-auto mb-3">
+                    <h4 class="font-bold text-secondary text-lg">Micas de Cristal Templado</h4>
+                    <p class="text-sm text-gray-500">Máxima protección contra rayones.</p>
+                </div>
+
+                <!-- Accesorio 2: Cargadores de Carga Rápida -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-center hover:shadow-xl transition duration-300">
+                    <img src="https://placehold.co/400x400/f59e0b/ffffff?text=Cargador+USB+C" alt="Imagen de un cargador de pared de carga rápida" class="w-full h-32 object-contain mx-auto mb-3">
+                    <h4 class="font-bold text-secondary text-lg">Cargadores Ultra Rápidos</h4>
+                    <p class="text-sm text-gray-500">Certificados para la máxima velocidad.</p>
+                </div>
+
+                <!-- Accesorio 3: Fundas Protectoras -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-center hover:shadow-xl transition duration-300">
+                    <img src="https://placehold.co/400x400/f59e0b/ffffff?text=Fundas+Antigolpe" alt="Imagen de fundas protectoras de celular" class="w-full h-32 object-contain mx-auto mb-3">
+                    <h4 class="font-bold text-secondary text-lg">Fundas Antichoque</h4>
+                    <p class="text-sm text-gray-500">Estilo y seguridad para tu móvil.</p>
+                </div>
+
+                <!-- Accesorio 4: Mouse y Teclados -->
+                <div class="bg-white rounded-xl shadow-lg p-4 text-center hover:shadow-xl transition duration-300">
+                    <img src="https://placehold.co/400x400/f59e0b/ffffff?text=Teclado+y+Mouse" alt="Imagen de mouse y teclado de laptop" class="w-full h-32 object-contain mx-auto mb-3">
+                    <h4 class="font-bold text-secondary text-lg">Periféricos para Laptop</h4>
+                    <p class="text-sm text-gray-500">Optimiza tu productividad.</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-md text-white bg-primary hover:bg-secondary transition duration-300 transform hover:scale-105">
+                    Ver Catálogo Completo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Quiénes Somos/Ventajas -->
+    <section id="quienes-somos" class="py-16 sm:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-primary font-semibold tracking-wide uppercase">Nuestra Promesa</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    ¿Por qué elegir a PC Móvil?
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    Combinamos técnicos certificados, repuestos de calidad garantizada y un servicio al cliente excepcional.
+                </p>
+                <p class="mt-2 text-md text-gray-400">
+                    Desde el **2 de Marzo de 2019** brindando soluciones tecnológicas en Reynosa, Tamaulipas.
+                </p>
+            </div>
+
+            <div class="mt-10">
+                <dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-x-8 md:gap-y-10">
+                    <!-- Ventaja 1: Rapidez -->
+                    <div class="relative">
+                        <dt>
+                            <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
+                                <!-- Icono de Reloj (Rapidez) -->
+                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            </div>
+                            <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Reparaciones en el Día</p>
+                        </dt>
+                        <dd class="mt-2 ml-16 text-base text-gray-500">
+                            Realizamos la mayoría de las reparaciones de celulares y laptops el mismo día, para que no te quedes desconectado.
+                        </dd>
+                    </div>
+
+                    <!-- Ventaja 2: Garantía -->
+                    <div class="relative">
+                        <dt>
+                            <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
+                                <!-- Icono de Escudo (Garantía) -->
+                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.111a9.004 9.004 0 01-1.246 1.401m-3.567.92a9.004 9.004 0 01-1.637.382m-3.957.175a9.004 9.004 0 01-1.637-.382m-1.246-1.401a9.004 9.004 0 01-1.401-1.246m-.92-3.567a9.004 9.004 0 01-.382-1.637m-.175-3.957a9.004 9.004 0 01.382-1.637m1.401-1.246a9.004 9.004 0 011.246-1.401m3.567-.92a9.004 9.004 0 011.637-.382m3.957-.175a9.004 9.004 0 011.637.382m1.246 1.401a9.004 9.004 0 01.92 3.567m.175 3.957a9.004 9.004 0 01-.382 1.637m-1.401 1.246a9.004 9.004 0 01-1.246.92" /></svg>
+                            </div>
+                            <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Garantía Certificada</p>
+                        </dt>
+                        <dd class="mt-2 ml-16 text-base text-gray-500">
+                            Todos nuestros repuestos y servicios de mano de obra están respaldados por una garantía de 90 días.
+                        </dd>
+                    </div>
+
+                    <!-- Ventaja 3: Ubicación -->
+                    <div class="relative">
+                        <dt>
+                            <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white">
+                                <!-- Icono de Ubicación -->
+                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.843a2 2 0 01-2.828 0L6.343 16.657A8 8 0 1118.99 7.493a8 8 0 01-1.333 9.164zM12 13a3 3 0 100-6 3 3 0 000 6z" /></svg>
+                            </div>
+                            <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Expertos Locales</p>
+                        </dt>
+                        <dd class="mt-2 ml-16 text-base text-gray-500">
+                            Conocemos las necesidades de nuestra comunidad en Valle soleado, Reynosa. Llevamos más de 5 años al servicio.
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto (con el teléfono y dirección) -->
+    <section id="contacto" class="py-16 sm:py-24 bg-secondary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-base text-accent font-semibold tracking-wide uppercase">Contáctanos</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
+                    Estamos Listos para Ayudarte
+                </p>
+                <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-300">
+                    Llámanos o visítanos en nuestra ubicación en Reynosa, Tamaulipas.
+                </p>
+            </div>
+
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 text-white">
+                <!-- Información de Contacto -->
+                <div class="bg-primary bg-opacity-90 rounded-xl p-6 shadow-xl text-left">
+                    <h3 class="text-2xl font-bold mb-4">Información de PC Móvil</h3>
+                    
+                    <div class="flex items-center space-x-3 mb-4">
+                        <svg class="h-6 w-6 text-accent" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 00.948-.684l1.498-4.493a1 1 0 011.832 0l1.498 4.493a1 1 0 00.948.684H19a2 2 0 012 2v10a2 2 0 01-2 2h-14a2 2 0 01-2-2V5z" /></svg>
+                        <p class="text-lg font-medium">Teléfono:</p>
+                        <p class="text-lg font-bold text-accent">8999447020</p>
+                    </div>
+
+                    <div class="flex items-start space-x-3">
+                        <svg class="h-6 w-6 text-accent flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.843a2 2 0 01-2.828 0L6.343 16.657A8 8 0 1118.99 7.493a8 8 0 01-1.333 9.164z" /></svg>
+                        <p class="text-lg font-medium">Dirección:</p>
+                        <p class="text-lg">Valle soleado, Reynosa, Tamaulipas</p>
+                    </div>
+                </div>
+
+                <!-- Formulario Básico de Cotización (Simulado) -->
+                <div class="bg-white rounded-xl p-6 shadow-xl">
+                    <h3 class="text-2xl font-bold text-secondary mb-4">Envía tu Consulta</h3>
+                    <form class="space-y-4">
+                        <input type="text" placeholder="Tu Nombre" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" required>
+                        <input type="email" placeholder="Tu Correo Electrónico" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" required>
+                        <textarea placeholder="Describe tu problema o accesorio requerido" rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" required></textarea>
+                        <button type="submit" class="w-full py-3 bg-accent text-secondary font-bold rounded-full shadow-md hover:bg-yellow-600 transition duration-300">
+                            Enviar Solicitud
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Columna 1: Logo y Eslogan -->
+                <div>
+                    <h4 class="text-2xl font-extrabold text-primary mb-2">PC Móvil</h4>
+                    <p class="text-gray-400">Todo para tu Celular, Laptop o Tablet.</p>
+                </div>
+
+                <!-- Columna 2: Navegación Rápida -->
+                <div>
+                    <h5 class="text-lg font-semibold mb-3 text-white">Enlaces Rápidos</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#servicios" onclick="smoothScroll('servicios')" class="hover:text-primary transition duration-300">Reparaciones</a></li>
+                        <li><a href="#accesorios" onclick="smoothScroll('accesorios')" class="hover:text-primary transition duration-300">Accesorios</a></li>
+                        <li><a href="#contacto" onclick="smoothScroll('contacto')" class="hover:text-primary transition duration-300">Ubicación y Contacto</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Información de Contacto -->
+                <div>
+                    <h5 class="text-lg font-semibold mb-3 text-white">Detalles</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex justify-center sm:justify-start items-center space-x-2">
+                            <svg class="h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 00.948-.684l1.498-4.493a1 1 0 011.832 0l1.498 4.493a1 1 0 00.948.684H19a2 2 0 012 2v10a2 2 0 01-2 2h-14a2 2 0 01-2-2V5z" /></svg>
+                            <span>8999447020</span>
+                        </li>
+                        <li class="flex justify-center sm:justify-start items-start space-x-2">
+                            <svg class="h-5 w-5 text-primary flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.843a2 2 0 01-2.828 0L6.343 16.657A8 8 0 1118.99 7.493a8 8 0 01-1.333 9.164z" /></svg>
+                            <span>Valle soleado, Reynosa, Tamaulipas</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-4 border-t border-gray-700 text-sm text-center text-gray-500">
+                &copy; 2024 PC Móvil. Todos los derechos reservados. Fundada el 2 de Marzo de 2019.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
